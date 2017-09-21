@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>
+    </table>
+    {% for course in courses %}
+        <td>{{ course.name }}</td>
+        <td>{{ course.desc }}</td>
+        <td>{{ course.added }}</td>
+        <a href="{% url 'course_delete' %}">remove</a>
+        {% endfor %}
+</body>
+</html>
