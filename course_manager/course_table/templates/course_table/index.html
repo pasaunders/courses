@@ -5,6 +5,11 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="{% url 'add_course' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Add">
+    </form>
     <table>
         <tr>
             <th>Course Name</th>
@@ -17,7 +22,7 @@
         <td>{{ course.name }}</td>
         <td>{{ course.desc }}</td>
         <td>{{ course.added }}</td>
-        <a href="{% url 'course_delete' %}">remove</a>
+        <a href="{% url 'course_delete' user_id=course.id %}">remove</a>
         {% endfor %}
 </body>
 </html>
