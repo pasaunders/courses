@@ -2,14 +2,6 @@ from django.db import models
 import re
 
 # Create your models here.
-class Users(models.Model):
-    name = models.CharField(max_length=60)
-    email = models.CharField(max_length=60)
-    password = models.CharField(max_length=255)
-    objects = Users_valid()
-
-
-
 class Users_valid(models.Manager):
     def user_validator(self, postData):
         errors = {}
@@ -20,3 +12,10 @@ class Users_valid(models.Manager):
         if len(Users.objects.filter(email=postData['email'])):
             errors['email'] = 'Email must be unique.'
         return errors
+
+
+class Users(models.Model):
+    name = models.CharField(max_length=60)
+    email = models.CharField(max_length=60, unique=True)
+    password = models.CharField(max_length=255)
+    objects = Users_valid()
