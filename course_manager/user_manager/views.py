@@ -38,7 +38,8 @@ def login(request):
         if bcrypt.checkpw(
             request.POST['password'].encode(),
             Users.objects.filter(email=request.POST['email'])['password']
-            )
+            ):
+            # TODO: set session and redirect to success, build success and index html.
 
 
 def success(request):
