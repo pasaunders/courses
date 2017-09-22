@@ -6,11 +6,11 @@
 </head>
 <body>
     <h1>Are you sure you want to delete {{ course.name }}?</h1>
-    <form action="{% url 'course_final_remove' user_id=course.id %}" method="post">
+    <form action="{% url 'courses:course_final_remove' user_id=course.id %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Delete Forever">
     </form>
-    <form action="{% url 'course_display' %}" method="get">
+    <form action="{% url 'courses:course_display' %}" method="get">
         {% csrf_token %}
         <input type="submit" value="Cancel">
     </form>

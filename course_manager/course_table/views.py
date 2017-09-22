@@ -25,7 +25,7 @@ def delete(request, user_id):
 def remove(request, user_id):
     """Permanently remove selected course."""
     Courses.objects.get(id=user_id).delete()
-    return redirect(reverse('course_display'))
+    return redirect(reverse('courses:course_display'))
 
 
 def add_course(request):
@@ -35,4 +35,4 @@ def add_course(request):
             name=request.POST['name'],
             desc=request.POST['desc']
         )
-    return redirect(reverse('course_display'))
+    return redirect(reverse('courses:course_display'))
